@@ -1,11 +1,13 @@
 package com.example.IntegradorII.service;
 
+import com.example.IntegradorII.entity.Paciente;
 import com.example.IntegradorII.entity.Turno;
 import com.example.IntegradorII.repository.TurnoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TurnoService {
@@ -21,5 +23,5 @@ public class TurnoService {
     public void eliminarTurno(Integer id){
         turnoRepository.deleteAllById(id);
     }
-
+    public Optional<Turno> buscarPorID(Integer id){ return turnoRepository.findById(id);}
 }
