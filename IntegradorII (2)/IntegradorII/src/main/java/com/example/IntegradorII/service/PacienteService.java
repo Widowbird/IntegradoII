@@ -21,7 +21,7 @@ public class PacienteService {
         return pacienteRepository.findAll();
     }
     public void eliminarPaciente(Integer id){
-        pacienteRepository.deleteAllById(id);
+        pacienteRepository.deleteById(id);
     }
     public Optional<Paciente> buscarPorID(Integer id){ return pacienteRepository.findById(id);}
 }
