@@ -1,8 +1,6 @@
 package com.example.IntegradorII.controller;
 
-import com.example.IntegradorII.entity.Domicilio;
 import com.example.IntegradorII.entity.Odontologo;
-import com.example.IntegradorII.service.DomicilioService;
 import com.example.IntegradorII.service.OdontologoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

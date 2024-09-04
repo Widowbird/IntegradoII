@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 
@@ -16,7 +17,7 @@ import java.time.LocalDate;
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column
     private String nombre;
     @Column
@@ -25,8 +26,12 @@ public class Paciente {
     private String cedula;
     @Column
     private LocalDate fechaIngreso;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "domicilio_id", referencedColumnName = "id")
     private Domicilio domicilio;
-    @Column
+    @Column(unique = true, nullable = false)
     private String email;
+    @ManyToOne
+    @JoinColumn(name = "odontologoId")
+    private Odontologo odontologo;
 }
