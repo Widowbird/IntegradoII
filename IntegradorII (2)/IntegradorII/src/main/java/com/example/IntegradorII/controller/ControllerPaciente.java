@@ -1,5 +1,6 @@
 package com.example.IntegradorII.controller;
 
+import com.example.IntegradorII.entity.Odontologo;
 import com.example.IntegradorII.entity.Paciente;
 import com.example.IntegradorII.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class ControllerPaciente {
         return ResponseEntity.ok(pacienteService.listarPaciente());
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> eliminarPaciente(@RequestBody Integer id){
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Integer id){
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
         if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPaciente(id);

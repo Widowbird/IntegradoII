@@ -21,7 +21,7 @@ public class OdontologoService {
         return odontologoRepository.findAll();
     }
     public void eliminarOdontologo(Integer id){
-        odontologoRepository.deleteAllById(id);
-    }
+        odontologoRepository.deleteById(id);
+    } //cambio deleteAllById
     public Optional<Odontologo> buscarPorID(Integer id){ return odontologoRepository.findById(id);}
 }

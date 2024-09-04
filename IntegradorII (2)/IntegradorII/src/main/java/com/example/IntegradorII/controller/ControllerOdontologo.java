@@ -25,13 +25,14 @@ public class ControllerOdontologo {
         return ResponseEntity.ok(odontologoService.listarOdontologos());
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> eliminarOdontologo(@RequestBody Integer id){
-        Optional<Odontologo> odontologoBuscado= odontologoService.buscarPorID(id);
-        if(odontologoBuscado.isPresent()){
+    @DeleteMapping("/{id}")  //agregado ("/{id}")
+    public ResponseEntity<String> eliminarOdontologo(@PathVariable Integer id) {  //cambio RequestBody
+
+        Optional<Odontologo> odontologoBuscado = odontologoService.buscarPorID(id);
+        if (odontologoBuscado.isPresent()) {
             odontologoService.eliminarOdontologo(id);
             return ResponseEntity.ok("Odontologo eliminado");
-        }else {
+        } else {
             return ResponseEntity.badRequest().body("Odontologo no encontrado");
         }
     }
