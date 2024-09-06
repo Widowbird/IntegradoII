@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Cascade;
 
 import java.time.LocalDate;
 
@@ -14,6 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Pacientes" )
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +31,4 @@ public class Paciente {
     private Domicilio domicilio;
     @Column(unique = true, nullable = false)
     private String email;
-    @ManyToOne
-    @JoinColumn(name = "odontologoId")
-    private Odontologo odontologo;
 }

@@ -20,8 +20,8 @@ public class PacienteService {
     public List<Paciente> listarPaciente(){
         return pacienteRepository.findAll();
     }
-    public void eliminarPaciente(Integer id){
-        pacienteRepository.deleteAllById(id);
+    public void eliminarPaciente(Long id){
+        pacienteRepository.deleteById(id);
     }
-    public Optional<Paciente> buscarPorID(Integer id){ return pacienteRepository.findById(id);}
+    public Optional<Paciente> buscarPorID(Long id){ return pacienteRepository.findById(id);}
 }

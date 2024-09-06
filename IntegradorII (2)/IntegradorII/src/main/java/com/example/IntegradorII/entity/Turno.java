@@ -14,15 +14,16 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "turnos")
 public class Turno {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pacienteId", referencedColumnName = "id")
+    private Long id;
+    @ManyToOne
+    @JoinColumn(name = "paciente_id", referencedColumnName = "id")
     private Paciente paciente;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "odontologoId", referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "odontologo_id", referencedColumnName = "id")
     private Odontologo odontologo;
     @Column
     private LocalDate fecha;

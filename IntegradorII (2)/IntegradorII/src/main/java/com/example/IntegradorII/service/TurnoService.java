@@ -20,8 +20,8 @@ public class TurnoService {
     public List<Turno> listarTurno(){
         return turnoRepository.findAll();
     }
-    public void eliminarTurno(Integer id){
-        turnoRepository.deleteAllById(id);
+    public void eliminarTurno(Long id){
+        turnoRepository.deleteById(id);
     }
-    public Optional<Turno> buscarPorID(Integer id){ return turnoRepository.findById(id);}
+    public Optional<Turno> buscarPorID(Long id){ return turnoRepository.findById(id);}
 }

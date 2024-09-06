@@ -20,8 +20,8 @@ public class OdontologoService {
     public List<Odontologo> listarOdontologos(){
         return odontologoRepository.findAll();
     }
-    public void eliminarOdontologo(Integer id){
-        odontologoRepository.deleteAllById(id);
+    public void eliminarOdontologo(Long id){
+        odontologoRepository.deleteById(id);
     }
-    public Optional<Odontologo> buscarPorID(Integer id){ return odontologoRepository.findById(id);}
+    public Optional<Odontologo> buscarPorID(Long id){ return odontologoRepository.findById(id);}
 }

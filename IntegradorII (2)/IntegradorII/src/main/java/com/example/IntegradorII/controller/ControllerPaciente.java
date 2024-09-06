@@ -1,6 +1,7 @@
 package com.example.IntegradorII.controller;
 
 import com.example.IntegradorII.entity.Paciente;
+import com.example.IntegradorII.exception.ResourceNotFoundException;
 import com.example.IntegradorII.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,18 @@ public class ControllerPaciente {
         return ResponseEntity.ok(pacienteService.listarPaciente());
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> eliminarPaciente(@RequestBody Integer id){
+    @GetMapping("/buscar/{id}")
+    public ResponseEntity<Optional<Paciente>> buscarPaciente(@PathVariable Long id) throws ResourceNotFoundException {
+        Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
+        if(pacienteBuscado.isPresent()){
+            return ResponseEntity.ok(pacienteBuscado);
+        }else {
+            throw new ResourceNotFoundException("Paciente no encontrado");
+        }
+    }
+
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<String> eliminarPaciente(@PathVariable Long id){
         Optional<Paciente> pacienteBuscado= pacienteService.buscarPorID(id);
         if(pacienteBuscado.isPresent()){
             pacienteService.eliminarPaciente(id);

@@ -16,17 +16,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="odontologos")
 public class Odontologo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     @Column
     private String nombre;
     @Column
     private String apellido;
     @Column
     private String matricula;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "odontologo")
-    @JsonIgnore
-    private List<Paciente> pacientes=new ArrayList<>();
 }
