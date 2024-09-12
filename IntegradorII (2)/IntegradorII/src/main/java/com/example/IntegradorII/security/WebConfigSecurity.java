@@ -30,13 +30,13 @@ public class WebConfigSecurity {
         provider.setPasswordEncoder(bCryptPasswordEncoder);
         return provider;
     }
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz)->authz
-                        .requestMatchers("/post_pacientes.html").hasRole("USER")
+                        .requestMatchers("/index.html","/turno").hasRole("USER")
+                        .requestMatchers("/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .formLogin(withDefaults()).logout(withDefaults());
         return http.build();

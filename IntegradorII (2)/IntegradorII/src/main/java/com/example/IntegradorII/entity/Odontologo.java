@@ -27,4 +27,10 @@ public class Odontologo {
     private String apellido;
     @Column(unique = true, nullable = false)
     private String matricula;
+
+    public Odontologo(String nombre, String apellido, String matricula) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.matricula = matricula;
+    }
 }
