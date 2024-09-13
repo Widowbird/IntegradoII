@@ -35,8 +35,8 @@ public class WebConfigSecurity {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests((authz)->authz
-                        .requestMatchers("/index.html","/turno").hasRole("USER")
-                        .requestMatchers("/**").hasRole("ADMIN")
+                        .requestMatchers("/index.html").hasAnyRole("USER","ADMIN")
+                        .requestMatchers("/turno").hasRole("USER")
                         .anyRequest().authenticated())
                 .formLogin(withDefaults()).logout(withDefaults());
         return http.build();
